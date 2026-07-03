@@ -1,0 +1,45 @@
+aid: storagepug
+url: https://raw.githubusercontent.com/api-evangelist/storagepug/refs/heads/main/apis.yml
+name: StoragePug
+kind: company
+description: >-
+  StoragePug builds marketing websites, online rental/reservation flows, and
+  lead-management dashboards for self-storage facility operators. StoragePug
+  has no public, self-service developer portal, no published REST/GraphQL API
+  reference, and no OpenAPI specification of its own. Its documented
+  programmatic surface runs the other direction: StoragePug is a licensed
+  integration partner that consumes property-management-system APIs -
+  primarily SiteLink's API, with additional PMS partners such as CallPotential
+  and OpenTech Alliance/StorageTreasures - to pull unit rates, availability,
+  and tenant data into the facility websites it builds, and to push back
+  online rentals, reservations, and payments. No webhook system, API key
+  management screen, or Zapier app for StoragePug itself was found. This entry
+  is documented as a stub because there is no public API to catalog.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Self Storage
+- Marketing Websites
+- Lead Generation
+- Property Management Software
+- SiteLink Integration
+- No Public API
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.storagepug.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/storagepug
+- type: HelpCenter
+  url: https://help.storagepug.com/en
+- type: Documentation
+  url: https://www.storagepug.com/blog/tag/api-integration
+- type: GitHubOrganization
+  url: https://github.com/storagepug
+- type: Plans
+  url: plans/storagepug-plans-pricing.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

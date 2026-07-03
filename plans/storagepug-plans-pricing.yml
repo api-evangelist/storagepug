@@ -1,0 +1,129 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: StoragePug
+providerId: storagepug
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Self Storage
+- Marketing Websites
+- Lead Generation
+- Plans
+description: >-
+  StoragePug sells per-facility website/marketing subscriptions rather than
+  API access. The published Professional tier is $150/month with unlimited
+  units and staff accounts; the Pug Partnership (full website, marketing, and
+  PMS-integration toolkit) and Enterprise tiers are quote-only and require a
+  sales conversation. A third-party listing (Capterra/GetApp) cites an older
+  or alternate "$100 per user, per month" starting price that does not match
+  the current storagepug.com/plans page; both figures are recorded here for
+  transparency. There is no API pricing because there is no public API.
+notes: >-
+  Pricing sourced from storagepug.com/plans/ on the review date. The
+  Enterprise tier's feature list rendered only placeholder/lorem-ipsum copy
+  ("Hello World," "This is an editable list") at review time, suggesting the
+  page section is unfinished; no contract length or money-back-guarantee
+  language appears on the plans page itself, though StoragePug's homepage
+  separately advertises a 30-day money-back guarantee and no long-term
+  contracts. No usage-based API metering exists because there is no public
+  API - PMS connectivity (e.g., SiteLink) is bundled into the Pug Partnership
+  tier as "PMS Integration," not sold as a metered API product.
+sources:
+- https://www.storagepug.com/plans/
+- https://www.storagepug.com/
+- https://www.capterra.com/p/191807/StoragePug/
+- https://www.getapp.com/industries-software/a/storagepug/
+plans:
+- id: storagepug-professional
+  name: Professional
+  type: paid
+  description: >-
+    Entry tier described on the plans page as "all the basics" - staff
+    accounts and unlimited units on a StoragePug website.
+  entries:
+  - label: Monthly Subscription
+    name: professional_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $150/month
+    userMultiplied: false
+  elements:
+  - name: Staff Accounts
+  - name: Unlimited Units
+- id: storagepug-pug-partnership
+  name: Pug Partnership
+  type: paid
+  description: >-
+    Marketed as the "Website and Marketing Toolkit" - full self-storage
+    website plus online rentals, reservations, tenant payments, digital
+    lease signing, reputation management, and PMS integration (e.g.,
+    SiteLink). Pricing is not published; prospects must request a demo.
+  entries:
+  - label: Monthly Subscription
+    name: pug_partnership_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: Contact sales - not published
+    userMultiplied: false
+  elements:
+  - name: Unlimited Online Rentals
+  - name: Unlimited Reservations
+  - name: Reputation Management
+  - name: Tenant Payment Portal
+  - name: PMS Integration
+  - name: Digital Lease Signing
+  - name: Modern, Responsive Design
+- id: storagepug-enterprise
+  name: Enterprise
+  type: paid
+  description: >-
+    Positioned as the tier to "grow your business." Feature list was
+    unpopulated/placeholder text on the plans page at review time; pricing
+    and scope require direct contact with StoragePug.
+  entries:
+  - label: Monthly Subscription
+    name: enterprise_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: Contact sales - not published
+    userMultiplied: false
+  elements:
+  - name: Custom Scope (per sales conversation)
+- id: storagepug-thirdparty-listing
+  name: Third-Party Listing (Capterra/GetApp)
+  type: paid
+  description: >-
+    Independent software-directory listings cite a different starting price
+    than storagepug.com/plans/ as of the review date; included here for
+    transparency rather than as a current, StoragePug-confirmed figure.
+  entries:
+  - label: Listed Starting Price
+    name: thirdparty_starting_price
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $100 per user, per month (per Capterra/GetApp; not corroborated on storagepug.com)
+    userMultiplied: true
+  elements:
+  - name: No Free Trial (per listing)
+  - name: No Free Version (per listing)
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

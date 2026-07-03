@@ -1,0 +1,100 @@
+aid: storagepug
+name: StoragePug
+review:
+  question: Does StoragePug expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. StoragePug has no public API surface of
+    any kind - REST, GraphQL, or WebSocket - to model. StoragePug is a
+    consumer of other companies' APIs (chiefly SiteLink's) rather than a
+    publisher of its own; there is no server-push transport (WebSocket or
+    SSE) on StoragePug's own platform for a third-party developer to connect
+    to.
+findings:
+  summary: |
+    StoragePug does not publish a public developer API of any kind - no REST
+    API reference, no GraphQL schema, no WebSocket endpoint, no OpenAPI
+    specification, and no self-service developer portal or API key
+    management screen were found. StoragePug builds marketing websites,
+    online rental/reservation flows, and lead/insights dashboards for
+    self-storage facility operators (400+ facilities, ~680,000 monthly
+    rentals per company marketing copy). Its own help center
+    (help.storagepug.com) is organized around Onboarding, Insights Dashboard,
+    Websites, Marketing Best Practices, and General articles - all
+    end-user/operator facing, with nothing under a developer or API category.
+    StoragePug's documented "API integration" content runs in the opposite
+    direction from a typical provider entry: StoragePug is a licensed
+    integration partner that consumes property-management-system (PMS) APIs
+    - primarily SiteLink's API (help articles walk facility staff through
+    creating a SiteLink API user and granting StoragePug credentials to read
+    unit rates, availability, and tenant info, and to write back online
+    rentals, reservations, autopay, and tenant insurance) - plus additional
+    PMS partners referenced in StoragePug's own support content, such as
+    CallPotential and OpenTech Alliance/StorageTreasures. None of this
+    exposes an API surface of StoragePug's own for outside developers to
+    call. No webhook system, outbound event mechanism, or Zapier app for
+    StoragePug was found.
+  openSource: |
+    StoragePug is closed-source, proprietary SaaS. Its public GitHub
+    organization (github.com/storagepug, based in Knoxville, TN) contains two
+    original repositories - "storpug" and "storpug-lp" (a storpug.com landing
+    page built with CSS) - plus internal tooling ("nginx-config") and a
+    number of forks of unrelated open-source projects (TypeORM, Bootstrap,
+    AWX, dbt-snowplow-unified, ansible-role-nginx, a favicons generator, an
+    Angular slideshow component, and a Crisp API wrapper). None of it is a
+    published SDK, API client, or API specification for a StoragePug API.
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: No public REST API reference or OpenAPI document found anywhere on storagepug.com or help.storagepug.com.
+    - protocol: GraphQL
+      scheme: https
+      documented: false
+      note: No GraphQL endpoint or schema documented.
+    - protocol: Webhook
+      scheme: https
+      documented: false
+      note: No outbound webhook system for StoragePug's own platform is documented; StoragePug instead consumes PMS webhooks/APIs (e.g., SiteLink) on the operator's behalf.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere on StoragePug's site or help center as of the review date.
+  endpointsModeled: none
+sources:
+  - url: https://help.storagepug.com/en
+    type: Documentation
+    note: Help Center home - Onboarding, Insights Dashboard, Websites, Marketing Best Practices, General; no developer/API category present.
+  - url: https://help.storagepug.com/en/articles/5081781-creating-sitelink-api-user
+    type: Documentation
+    note: Walks a facility through creating a SiteLink API user so StoragePug can read/write SiteLink data - StoragePug consuming SiteLink's API, not exposing its own.
+  - url: https://www.storagepug.com/blog/tag/api-integration
+    type: Documentation
+    note: Blog tag collecting StoragePug's SiteLink API integration posts (autopay, tenant insurance, rate optimization) - all framed as StoragePug-into-SiteLink, not third-party-into-StoragePug.
+  - url: https://www.storagepug.com/
+    type: Documentation
+    note: Marketing homepage - Websites, Unit Manager/Lead Manager, Data Dashboards; no developer or API link in navigation.
+  - url: https://www.storagepug.com/plans/
+    type: Documentation
+    note: Pricing tiers (Professional, Pug Partnership, Enterprise); no API/usage-based line item.
+  - url: https://github.com/storagepug
+    type: SourceCode
+    note: Public GitHub org - two small original repos (storpug, storpug-lp) plus forks; no public API/SDK code.
+  - url: https://www.storable.com/sitelink-integrations/storagepug/
+    type: Other
+    note: SiteLink marketplace listing confirms StoragePug as a website/marketing partner that integrates via the SiteLink API.
+  - url: https://www.capterra.com/p/191807/StoragePug/
+    type: Other
+    note: Third-party pricing listing ($100/user/month) used cross-check against storagepug.com/plans/.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No public API surface (REST, GraphQL, or WebSocket) exists to catalog or
+    model with AsyncAPI. apis.yml documents StoragePug as a stub with an
+    empty apis array and an honest description of its role as a PMS-API
+    consumer (chiefly SiteLink) rather than a publisher of its own developer
+    API.
