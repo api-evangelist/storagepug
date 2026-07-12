@@ -28,6 +28,8 @@ modified: '2026-07-03'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/storagepug-domain-security.yml
 - type: Website
   url: https://www.storagepug.com
 - type: LinkedIn
@@ -40,6 +42,8 @@ common:
   url: https://github.com/storagepug
 - type: Plans
   url: plans/storagepug-plans-pricing.yml
+- url: https://www.storagepug.com/blog/rss.xml
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
