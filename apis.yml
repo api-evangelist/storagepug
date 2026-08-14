@@ -13,8 +13,12 @@ description: >-
   and OpenTech Alliance/StorageTreasures - to pull unit rates, availability,
   and tenant data into the facility websites it builds, and to push back
   online rentals, reservations, and payments. No webhook system, API key
-  management screen, or Zapier app for StoragePug itself was found. This entry
-  is documented as a stub because there is no public API to catalog.
+  management screen, or Zapier app for StoragePug itself was found. Contract
+  discovery on 2026-08-14 did find a live first-party backend host,
+  api.storagepug.com, which serves the Insights dashboard at
+  app.storagepug.com; it is undocumented, publishes no OpenAPI, GraphQL, MCP or
+  /.well-known/ document, and is not offered to third-party developers. This
+  entry is documented as a stub because there is no public API to catalog.
 accessModel:
   pricing: paid
   onboarding: unknown
@@ -36,7 +40,7 @@ tags:
 - SiteLink Integration
 - No Public API
 created: '2026-07-03'
-modified: '2026-07-03'
+modified: '2026-08-14'
 specificationVersion: '0.19'
 apis: []
 common:
@@ -56,6 +60,48 @@ common:
   url: plans/storagepug-plans-pricing.yml
 - url: https://www.storagepug.com/blog/rss.xml
   type: Blog
+- type: LLMsTxt
+  url: llms/storagepug-llms.txt
+- type: RateLimits
+  url: rate-limits/storagepug-rate-limits.yml
+- type: Pricing
+  url: https://www.storagepug.com/partnership
+- type: TermsOfService
+  url: https://www.storagepug.com/terms
+- type: PrivacyPolicy
+  url: https://www.storagepug.com/privacy
+- type: Login
+  url: https://app.storagepug.com/login
+- type: Support
+  url: https://www.storagepug.com/contact
+- type: About
+  url: https://www.storagepug.com/about
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-14'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    StoragePug sells self-storage websites and the Insights dashboard as an
+    end-user product only - the live backend at api.storagepug.com answers every
+    path with a custom application 404 and serves no spec, no /.well-known/
+    document and no docs, and the whole 130-article help center indexed by its
+    own llms.txt is operator-facing with no developer or API section.
+  evidence:
+  - url: https://api.storagepug.com/openapi.json
+    status: 404
+  - url: https://api.storagepug.com/graphql
+    status: 404
+  - url: https://www.storagepug.com/developers
+    status: 404
+  - url: https://www.storagepug.com/.well-known/agent-card.json
+    status: 404
+  - url: https://help.storagepug.com/llms.txt
+    status: 200
+  checked: '2026-08-14'
