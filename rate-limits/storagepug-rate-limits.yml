@@ -1,0 +1,41 @@
+generated: '2026-08-14'
+method: searched
+source: https://help.storagepug.com/en - StoragePug Help Center, searched for any published API rate limit, quota or throttling policy
+provider: StoragePug
+providerId: storagepug
+limit_count: 0
+description: >-
+  StoragePug publishes no rate limits, because it publishes no public API. The
+  help center, the marketing site and the plans/partnership page contain no
+  quota, throttle, burst or 429 policy of any kind, and there is no developer
+  documentation on any StoragePug host to carry one. The one live first-party
+  API host found during contract discovery, api.storagepug.com, is the
+  undocumented backend for the Insights dashboard at app.storagepug.com; it
+  returns no RateLimit-* or X-RateLimit-* headers on the anonymous responses it
+  will serve, and no published policy describes it.
+limits: []
+headers_observed: []
+headers_note: >-
+  Probed anonymously: https://api.storagepug.com/ (404) and
+  https://api.storagepug.com/health (201) return date, content-type,
+  x-request-id, vary, access-control-allow-credentials,
+  access-control-expose-headers, etag and strict-transport-security. No
+  RateLimit-*, X-RateLimit-*, Retry-After or equivalent throttling signal is
+  present on either response.
+exhaustion_status_code: null
+searched:
+- url: https://help.storagepug.com/en
+  status: 200
+  found: no rate limit or quota documentation
+- url: https://help.storagepug.com/llms.txt
+  status: 200
+  found: no rate limit or quota entry among the 130+ indexed help articles
+- url: https://www.storagepug.com/partnership
+  status: 200
+  found: no usage-based or metered line item in any published tier
+- url: https://api.storagepug.com/health
+  status: 201
+  found: no rate limit response headers
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

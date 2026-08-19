@@ -1,0 +1,178 @@
+generated: '2026-08-14'
+method: probed
+source: live HTTP probes of every StoragePug host named in apis.yml plus the API and app hosts discovered during contract discovery
+provider: StoragePug
+providerId: storagepug
+description: >-
+  Anonymous probe of the standard /.well-known/ surface across every StoragePug
+  host. Nothing StoragePug itself publishes was found: every /.well-known/ path
+  on www.storagepug.com, api.storagepug.com and app.storagepug.com returned 404.
+  One 200 was recorded - a security.txt on help.storagepug.com - but it is NOT
+  StoragePug's document. It is Intercom's own security.txt, served because the
+  help center is hosted on Intercom, and its Canonical field points at
+  https://app.intercom.com/.well-known/security.txt. Crediting StoragePug with a
+  vendor's security.txt would be a false positive, so no WellKnown or SecurityTxt
+  pointer is emitted in apis.yml for this probe.
+hosts:
+- host: www.storagepug.com
+  note: >-
+    Marketing site (HubSpot CMS). Every /.well-known/ path returns the site's own
+    404 page as text/html, not a document.
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /llms.txt
+    status: 404
+    file: null
+  - path: /robots.txt
+    status: 200
+    file: null
+    note: Served, but a robots.txt is not a well-known API document; recorded for completeness only.
+- host: api.storagepug.com
+  note: >-
+    Live first-party backend host discovered during contract discovery. Answers
+    every unknown path with a custom JSON-ish 404 ("End point not found. Looks
+    like you are in the wrong place homie") and sets x-request-id + HSTS, so it is
+    an application API rather than a web server. /health returns 201 with the body
+    `true`. No /.well-known/ document of any kind is served.
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /llms.txt
+    status: 404
+    file: null
+- host: help.storagepug.com
+  note: >-
+    Help center, hosted on Intercom. The one 200 recorded here belongs to Intercom,
+    not to StoragePug - see security_txt_ownership below.
+  paths:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    owner: Intercom
+    credited_to_provider: false
+    note: >-
+      Real RFC 9116 document, but it is the Intercom platform's file. Contact is
+      https://bugcrowd.com/intercom and mailto:security@intercom.com, and
+      Canonical is https://app.intercom.com/.well-known/security.txt. Not saved
+      to this repo and not wired as a StoragePug SecurityTxt pointer.
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /llms.txt
+    status: 200
+    file: ../llms/storagepug-llms.txt
+    note: >-
+      Real llms.txt index of the StoragePug help center, saved verbatim. Generated
+      by the Intercom help-center platform but served from StoragePug's own
+      subdomain and describing StoragePug's own content, so it is credited to
+      StoragePug. Wired as type LLMsTxt.
+- host: app.storagepug.com
+  note: >-
+    Insights dashboard SPA ("Insights: Powered by StoragePug"). Every
+    /.well-known/ path returns the SPA shell HTML with a 404 status - no document.
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /llms.txt
+    status: 404
+    file: null
+security_txt_ownership: >-
+  The only security.txt reachable on any StoragePug host is Intercom's, served
+  from the Intercom-hosted help center and canonicalized to app.intercom.com.
+  StoragePug publishes no security.txt of its own on www.storagepug.com,
+  api.storagepug.com or app.storagepug.com.
+agent_card_found: false
+oauth_metadata_found: false
+pointer_emitted: false
+pointer_note: >-
+  No WellKnown or SecurityTxt pointer is written to apis.yml. Every path that
+  returned 200 was either a robots.txt (not an API document) or a vendor-owned
+  file. Only the llms.txt is credited, and it is wired under its own LLMsTxt type.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

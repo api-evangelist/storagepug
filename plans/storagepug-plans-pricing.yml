@@ -1,11 +1,15 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.storagepug.com/partnership
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: StoragePug
 providerId: storagepug
 created: '2026-07-03'
-modified: '2026-07-03'
+modified: '2026-08-14'
 reconciled: false
+plan_count: 4
 tags:
 - Self Storage
 - Marketing Websites
@@ -30,8 +34,24 @@ notes: >-
   contracts. No usage-based API metering exists because there is no public
   API - PMS connectivity (e.g., SiteLink) is bundled into the Pug Partnership
   tier as "PMS Integration," not sold as a metered API product.
+recheck:
+  date: '2026-08-14'
+  url: https://www.storagepug.com/partnership
+  status: 200
+  finding: >-
+    Re-read on 2026-08-14 and the published pricing is unchanged: Professional
+    is still $150/mo with Staff Accounts and Unlimited Units, Pug Partnership is
+    still the unpriced "Website and Marketing Toolkit" (unlimited online rentals,
+    unlimited reservations, reputation management, tenant payment portal, PMS
+    integration, digital lease signing), and the Enterprise tier still renders
+    placeholder copy ("Hello World", "This is an editable list", "Not this")
+    where its feature list belongs - the same unfinished section recorded in
+    July. The only change is the URL: https://www.storagepug.com/plans/ now
+    returns 301 to https://www.storagepug.com/partnership, which is the live
+    pricing page and the canonical source for this artifact.
 sources:
-- https://www.storagepug.com/plans/
+- https://www.storagepug.com/partnership
+- https://www.storagepug.com/plans/  # 301 -> /partnership as of 2026-08-14
 - https://www.storagepug.com/
 - https://www.capterra.com/p/191807/StoragePug/
 - https://www.getapp.com/industries-software/a/storagepug/
