@@ -39,6 +39,9 @@ accessModel:
   trial: false
   try_now: false
   public: false
+  gated: private
+  gated_source:
+  - tag:No Public API
   label: Paid
   confidence: medium
   source:
@@ -52,7 +55,6 @@ tags:
 - Lead Generation
 - Property Management Software
 - SiteLink Integration
-- No Public API
 created: '2026-07-03'
 modified: '2026-08-14'
 specificationVersion: '0.23'
@@ -119,3 +121,5 @@ x-coverage:
   - url: https://help.storagepug.com/llms.txt
     status: 200
   checked: '2026-08-14'
+x-tags-removed:
+- No Public API
